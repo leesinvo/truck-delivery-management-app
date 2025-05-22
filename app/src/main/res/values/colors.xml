@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!-- Primary colors -->
+    <color name="blue_40">#1976D2</color>
+    <color name="blue_80">#64B5F6</color>
+
+    <!-- Secondary colors -->
+    <color name="blue_grey_40">#546E7A</color>
+    <color name="blue_grey_80">#90A4AE</color>
+
+    <!-- Tertiary colors -->
+    <color name="light_blue_40">#03A9F4</color>
+    <color name="light_blue_80">#81D4FA</color>
+
+    <!-- Background colors -->
+    <color name="light_background">#FAFAFA</color>
+    <color name="light_surface">#FFFFFF</color>
+    <color name="dark_background">#121212</color>
+    <color name="dark_surface">#1E1E1E</color>
+
+    <!-- Status colors -->
+    <color name="error_red">#B00020</color>
+    <color name="success_green">#4CAF50</color>
+    <color name="warning_yellow">#FFC107</color>
+    <color name="info_blue">#2196F3</color>
+
+    <!-- Request status colors -->
+    <color name="pending_color">#FFA000</color>
+    <color name="in_progress_color">#1976D2</color>
+    <color name="completed_color">#43A047</color>
+    <color name="cancelled_color">#D32F2F</color>
+
+    <!-- Map colors -->
+    <color name="truck_marker_color">#1976D2</color>
+    <color name="shop_marker_color">#4CAF50</color>
+    <color name="delivery_route_color">#2196F3</color>
+
+    <!-- Button colors -->
+    <color name="primary_button_color">@color/blue_40</color>
+    <color name="secondary_button_color">@color/blue_grey_40</color>
+    <color name="disabled_button_color">#BDBDBD</color>
+
+    <!-- Text colors -->
+    <color name="text_primary_light">#000000</color>
+    <color name="text_secondary_light">#757575</color>
+    <color name="text_primary_dark">#FFFFFF</color>
+    <color name="text_secondary_dark">#B3FFFFFF</color>
+
+    <!-- Divider colors -->
+    <color name="divider_light">#1F000000</color>
+    <color name="divider_dark">#1FFFFFFF</color>
+
+    <!-- Ripple colors -->
+    <color name="ripple_light">#1F000000</color>
+    <color name="ripple_dark">#33FFFFFF</color>
+
+    <!-- Overlay colors -->
+    <color name="scrim_light">#52000000</color>
+    <color name="scrim_dark">#99000000</color>
+
+    <!-- Status bar colors -->
+    <color name="status_bar_light">@color/blue_40</color>
+    <color name="status_bar_dark">@color/blue_80</color>
+
+    <!-- Navigation bar colors -->
+    <color name="nav_bar_light">@color/white</color>
+    <color name="nav_bar_dark">@color/black</color>
+
+    <!-- Card colors -->
+    <color name="card_background_light">@color/white</color>
+    <color name="card_background_dark">#2C2C2C</color>
+    <color name="card_stroke_light">#1F000000</color>
+    <color name="card_stroke_dark">#1FFFFFFF</color>
+
+    <!-- Input field colors -->
+    <color name="input_background_light">#F5F5F5</color>
+    <color name="input_background_dark">#2C2C2C</color>
+    <color name="input_stroke_light">#E0E0E0</color>
+    <color name="input_stroke_dark">#424242</color>
+
+    <!-- Snackbar colors -->
+    <color name="snackbar_background_light">#323232</color>
+    <color name="snackbar_background_dark">#FFFFFF</color>
+    <color name="snackbar_text_light">#FFFFFF</color>
+    <color name="snackbar_text_dark">#000000</color>
+</resources>

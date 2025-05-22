@@ -1,0 +1,66 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Test rules that allow all operations
+    match /{document=**} {
+      allow read, write: if true;
+    }
+
+    // Test collections
+    match /users_test/{userId} {
+      allow read, write: if true;
+    }
+
+    match /delivery_requests_test/{requestId} {
+      allow read, write: if true;
+    }
+
+    match /truck_locations_test/{truckId} {
+      allow read, write: if true;
+    }
+
+    // Test indexes
+    match /delivery_requests_test/{requestId} {
+      allow read: if true;
+      allow write: if true;
+      
+      index {
+        fields: ['status', 'createdAt'];
+        fields: ['userId', 'status'];
+        fields: ['acceptedBy', 'status'];
+      }
+    }
+
+    match /truck_locations_test/{truckId} {
+      allow read: if true;
+      allow write: if true;
+      
+      index {
+        fields: ['location.latitude', 'location.longitude'];
+        fields: ['status', 'lastUpdated'];
+      }
+    }
+
+    // Test validation rules
+    match /users_test/{userId} {
+      allow create: if request.resource.data.keys().hasAll(['email', 'userType']);
+      allow update: if request.resource.data.diff(resource.data).affectedKeys()
+                      .hasAny(['name', 'phoneNumber']);
+    }
+
+    match /delivery_requests_test/{requestId} {
+      allow create: if request.resource.data.keys().hasAll(['userId', 'productType', 'quantity', 'location']);
+      allow update: if request.resource.data.diff(resource.data).affectedKeys()
+                      .hasAny(['status', 'acceptedBy', 'completedAt']);
+    }
+
+    // Test compound queries
+    match /delivery_requests_test/{requestId} {
+      allow list: if request.query.filters.size() <= 2;
+    }
+
+    match /truck_locations_test/{truckId} {
+      allow list: if request.query.filters.size() <= 2;
+    }
+  }
+}

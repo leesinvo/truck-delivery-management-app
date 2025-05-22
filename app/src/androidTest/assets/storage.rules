@@ -1,0 +1,59 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Test rules that allow all operations for test environment
+    match /{allPaths=**} {
+      allow read, write: if true;
+    }
+
+    // Test storage paths
+    match /test_profile_images/{userId} {
+      allow read: if true;
+      allow write: if true;
+      
+      // Validate image uploads
+      allow create: if request.resource.size < 5 * 1024 * 1024 // 5MB
+                   && request.resource.contentType.matches('image/.*');
+    }
+
+    match /test_delivery_receipts/{requestId} {
+      allow read: if true;
+      allow write: if true;
+      
+      // Validate PDF uploads
+      allow create: if request.resource.size < 10 * 1024 * 1024 // 10MB
+                   && request.resource.contentType == 'application/pdf';
+    }
+
+    // Test metadata validation
+    match /test_profile_images/{userId} {
+      allow create: if request.resource.metadata.keys().hasAll(['userId', 'uploadedAt']);
+      allow update: if request.resource.metadata.keys().hasAll(['updatedAt']);
+    }
+
+    match /test_delivery_receipts/{requestId} {
+      allow create: if request.resource.metadata.keys().hasAll(['requestId', 'uploadedBy', 'timestamp']);
+    }
+
+    // Test path-specific rules
+    match /test_temp/{fileName} {
+      // Temporary files are automatically deleted after 24 hours
+      allow read, write: if true;
+      allow create: if request.resource.metadata.timeToLive <= 24 * 60 * 60;
+    }
+
+    // Test size limits
+    match /test_uploads/{fileName} {
+      allow create: if request.resource.size < 50 * 1024 * 1024; // 50MB max
+    }
+
+    // Test content type restrictions
+    match /test_documents/{fileName} {
+      allow create: if request.resource.contentType.matches('application/.*|text/.*');
+    }
+
+    match /test_images/{fileName} {
+      allow create: if request.resource.contentType.matches('image/.*');
+    }
+  }
+}

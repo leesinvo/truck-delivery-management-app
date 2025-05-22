@@ -1,0 +1,118 @@
+{
+  "test_environment": {
+    "name": "instrumented_test",
+    "firebase_emulator": {
+      "enabled": true,
+      "host": "10.0.2.2",
+      "ports": {
+        "auth": 9099,
+        "firestore": 8080,
+        "database": 9000,
+        "functions": 5001,
+        "storage": 9199
+      }
+    },
+    "location_service": {
+      "update_interval_ms": 1000,
+      "fastest_interval_ms": 500,
+      "max_wait_time_ms": 5000,
+      "default_accuracy": "high",
+      "mock_locations": [
+        {
+          "name": "San Francisco",
+          "latitude": 37.7749,
+          "longitude": -122.4194
+        },
+        {
+          "name": "New York",
+          "latitude": 40.7128,
+          "longitude": -74.0060
+        },
+        {
+          "name": "Chicago",
+          "latitude": 41.8781,
+          "longitude": -87.6298
+        }
+      ]
+    },
+    "test_users": {
+      "driver": {
+        "email": "test.driver@example.com",
+        "password": "Test123!",
+        "user_type": "TRUCK_DRIVER"
+      },
+      "sales_point": {
+        "email": "test.sales@example.com",
+        "password": "Test123!",
+        "user_type": "SALES_POINT"
+      },
+      "admin": {
+        "email": "test.admin@example.com",
+        "password": "Test123!",
+        "user_type": "ADMIN"
+      }
+    },
+    "test_timeouts": {
+      "network_calls": 5000,
+      "location_updates": 3000,
+      "animations": 1000,
+      "database_operations": 4000,
+      "auth_operations": 3000
+    },
+    "test_collections": {
+      "users": "users_test",
+      "delivery_requests": "delivery_requests_test",
+      "truck_locations": "truck_locations_test",
+      "notifications": "notifications_test"
+    },
+    "test_data": {
+      "delivery_requests": {
+        "product_types": ["Electronics", "Groceries", "Furniture", "Books"],
+        "quantity_range": {
+          "min": 1,
+          "max": 100
+        },
+        "status_transitions": {
+          "PENDING": ["ACCEPTED", "CANCELLED"],
+          "ACCEPTED": ["IN_PROGRESS", "CANCELLED"],
+          "IN_PROGRESS": ["COMPLETED", "CANCELLED"],
+          "COMPLETED": [],
+          "CANCELLED": []
+        }
+      },
+      "location_bounds": {
+        "latitude": {
+          "min": -90,
+          "max": 90
+        },
+        "longitude": {
+          "min": -180,
+          "max": 180
+        },
+        "test_radius_km": 5
+      }
+    },
+    "notifications": {
+      "channels": {
+        "delivery_updates": {
+          "id": "test_delivery_channel",
+          "name": "Test Delivery Notifications",
+          "description": "Notifications for delivery updates in test environment",
+          "importance": "high"
+        },
+        "location_updates": {
+          "id": "test_location_channel",
+          "name": "Test Location Updates",
+          "description": "Notifications for location updates in test environment",
+          "importance": "high"
+        }
+      },
+      "types": {
+        "NEW_REQUEST": "New delivery request available",
+        "REQUEST_ACCEPTED": "Your request has been accepted",
+        "DRIVER_NEARBY": "Driver is approaching your location",
+        "DELIVERY_COMPLETED": "Delivery has been completed"
+      }
+    }
+  }
+}

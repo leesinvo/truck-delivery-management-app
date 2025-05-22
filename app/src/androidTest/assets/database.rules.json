@@ -1,0 +1,98 @@
+{
+  "rules": {
+    "test": {
+      "truck_locations": {
+        ".read": true,
+        ".write": true,
+        ".indexOn": ["latitude", "longitude", "status", "lastUpdated"],
+        "$truckId": {
+          ".validate": "newData.hasChildren(['truckId', 'location', 'status', 'lastUpdated'])",
+          "location": {
+            ".validate": "newData.hasChildren(['latitude', 'longitude'])",
+            "latitude": {
+              ".validate": "newData.isNumber() && newData.val() >= -90 && newData.val() <= 90"
+            },
+            "longitude": {
+              ".validate": "newData.isNumber() && newData.val() >= -180 && newData.val() <= 180"
+            }
+          },
+          "status": {
+            ".validate": "newData.isString() && newData.val().matches('^(AVAILABLE|ON_DELIVERY|OFFLINE)$')"
+          },
+          "lastUpdated": {
+            ".validate": "newData.isNumber() && newData.val() <= now"
+          }
+        }
+      },
+      "delivery_requests": {
+        ".read": true,
+        ".write": true,
+        ".indexOn": ["status", "userId", "acceptedBy", "createdAt"],
+        "$requestId": {
+          ".validate": "newData.hasChildren(['userId', 'productType', 'quantity', 'location', 'status'])",
+          "location": {
+            ".validate": "newData.hasChildren(['latitude', 'longitude'])",
+            "latitude": {
+              ".validate": "newData.isNumber() && newData.val() >= -90 && newData.val() <= 90"
+            },
+            "longitude": {
+              ".validate": "newData.isNumber() && newData.val() >= -180 && newData.val() <= 180"
+            }
+          },
+          "status": {
+            ".validate": "newData.isString() && newData.val().matches('^(PENDING|ACCEPTED|IN_PROGRESS|COMPLETED|CANCELLED)$')"
+          },
+          "quantity": {
+            ".validate": "newData.isNumber() && newData.val() > 0"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber() && newData.val() <= now"
+          },
+          "acceptedBy": {
+            ".validate": "!newData.exists() || newData.isString()"
+          },
+          "completedAt": {
+            ".validate": "!newData.exists() || (newData.isNumber() && newData.val() <= now)"
+          }
+        }
+      },
+      "user_locations": {
+        ".read": true,
+        ".write": true,
+        ".indexOn": ["userId", "timestamp"],
+        "$locationId": {
+          ".validate": "newData.hasChildren(['userId', 'location', 'timestamp'])",
+          "location": {
+            ".validate": "newData.hasChildren(['latitude', 'longitude'])",
+            "latitude": {
+              ".validate": "newData.isNumber() && newData.val() >= -90 && newData.val() <= 90"
+            },
+            "longitude": {
+              ".validate": "newData.isNumber() && newData.val() >= -180 && newData.val() <= 180"
+            }
+          },
+          "timestamp": {
+            ".validate": "newData.isNumber() && newData.val() <= now"
+          }
+        }
+      },
+      "notifications": {
+        ".read": true,
+        ".write": true,
+        ".indexOn": ["userId", "timestamp", "read"],
+        "$notificationId": {
+          ".validate": "newData.hasChildren(['userId', 'type', 'message', 'timestamp'])",
+          "type": {
+            ".validate": "newData.isString() && newData.val().matches('^(NEW_REQUEST|REQUEST_ACCEPTED|DRIVER_NEARBY|DELIVERY_COMPLETED)$')"
+          },
+          "timestamp": {
+            ".validate": "newData.isNumber() && newData.val() <= now"
+          },
+          "read": {
+            ".validate": "newData.isBoolean()"
+          }
+        }
+      }
+    }
+  }
+}

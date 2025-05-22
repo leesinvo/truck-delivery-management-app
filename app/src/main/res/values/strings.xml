@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">Truck Delivery</string>
+
+    <!-- Common -->
+    <string name="loading">Loading…</string>
+    <string name="error_occurred">An error occurred</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+    <string name="submit">Submit</string>
+    <string name="logout">Logout</string>
+    <string name="logout_confirmation">Are you sure you want to logout?</string>
+
+    <!-- Authentication -->
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="passwords_dont_match">Passwords do not match</string>
+    <string name="select_user_type">Select User Type</string>
+    <string name="truck_driver">Truck Driver</string>
+    <string name="sales_point">Sales Point</string>
+    <string name="dont_have_account">Don\'t have an account? Sign Up</string>
+    <string name="already_have_account">Already have an account? Login</string>
+
+    <!-- Driver Dashboard -->
+    <string name="driver_dashboard">Driver Dashboard</string>
+    <string name="active_requests">Active Requests</string>
+    <string name="accept_request">Accept Request</string>
+    <string name="mark_delivered">Mark as Delivered</string>
+    <string name="request_details">Request Details</string>
+    <string name="distance_away">%1$s km away</string>
+    <string name="eta">ETA: %1$s min</string>
+
+    <!-- Sales Point Dashboard -->
+    <string name="sales_point_dashboard">Sales Point Dashboard</string>
+    <string name="new_delivery_request">New Delivery Request</string>
+    <string name="product_type">Product Type</string>
+    <string name="quantity">Quantity</string>
+    <string name="active_request">Active Request</string>
+    <string name="cancel_request">Cancel Request</string>
+    <string name="fill_all_fields">Please fill all fields</string>
+
+    <!-- Request Status -->
+    <string name="status_pending">Pending</string>
+    <string name="status_accepted">Accepted</string>
+    <string name="status_in_progress">In Progress</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_cancelled">Cancelled</string>
+
+    <!-- Notifications -->
+    <string name="notification_channel_delivery">Delivery Notifications</string>
+    <string name="notification_channel_location">Location Tracking</string>
+    <string name="notification_channel_general">General Notifications</string>
+    <string name="notification_new_request">New Delivery Request</string>
+    <string name="notification_request_accepted">Request Accepted</string>
+    <string name="notification_driver_nearby">Driver Nearby</string>
+    <string name="notification_delivery_completed">Delivery Completed</string>
+
+    <!-- Location -->
+    <string name="location_permission_rationale">Location permission is needed to show your position on the map and match you with nearby delivery requests.</string>
+    <string name="location_permission_denied">Location permission was denied. Some features may not work properly.</string>
+    <string name="location_tracking">Your location is being shared with customers</string>
+
+    <!-- Error Messages -->
+    <string name="error_invalid_email">Invalid email address</string>
+    <string name="error_invalid_password">Password must be at least 6 characters</string>
+    <string name="error_location_unavailable">Location not available</string>
+    <string name="error_network">Network error. Please check your connection.</string>
+    <string name="error_unknown">Unknown error occurred</string>
+</resources>
